@@ -5,8 +5,10 @@ var Events = {
 		register: function(evtName, callback) {
 			Events.registered[evtName] = callback;
 		},
-		remove: function(evtName) {
-			Events.registered[evtName] = null;
+		remove: function(evtName, callback) {
+			if (!callback || Events.registered[evtName] === callback) {
+				Events.registered[evtName] = null;
+			};
 		}
 	}
 };
