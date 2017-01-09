@@ -20,7 +20,7 @@ var functionWrapper = function(value) {
  */
 
 cancelEvents.register(function() {
-  __cancel = true;
+  // __cancel = true;
 });
 
 /*
@@ -49,6 +49,7 @@ var __targetPositionY   = 0;
 var __progress          = 0;
 var __duration          = 0;
 var __cancel            = false;
+var __isScrolling       = false;
 
 var __target;
 var __containerElement;
@@ -118,6 +119,8 @@ var animateTopScroll = function(timestamp) {
     return;
   }
 
+  __isScrolling = false;
+
   if(events.registered['end']) {
     events.registered['end'](__to, __target, __currentPositionY);
   }
@@ -135,6 +138,9 @@ var setContainer = function (options) {
 };
 
 var startAnimateTopScroll = function(y, options, to, target) {
+
+  if (__isScrolling) return;
+  __isScrolling = true;
 
   window.clearTimeout(__delayTimeout);
 
