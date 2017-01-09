@@ -96,7 +96,7 @@ var Helpers = {
 
       componentDidMount: function() {
 
-
+        scroller.unmount();
 
         var containerId = this.props.containerId;
 

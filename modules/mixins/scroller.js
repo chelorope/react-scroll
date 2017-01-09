@@ -10,6 +10,7 @@ module.exports = {
 
   unmount: function() {
     __mapped = {};
+    __activeLink = null;
   },
 
   register: function(name, element){
